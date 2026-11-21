@@ -254,7 +254,7 @@ export function AdminDashboardPage() {
   if (!admin) {
     return (
       <div className="mx-auto max-w-md px-4 py-16">
-        <SEOHead title="Store Admin | Al Fajr Scents" description="Protected store administration portal." />
+        <SEOHead title="Store Admin | Al Fajr Scents" description="Protected store administration portal." noIndex />
         <div className="border border-[#10100E]/15 bg-[#FAF8F5] p-8">
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-[#C6A46A]">
             <Lock className="h-4 w-4" />
@@ -312,7 +312,7 @@ export function AdminDashboardPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <SEOHead title="Admin Dashboard | Al Fajr Scents" description="Al Fajr Scents management console." />
+      <SEOHead title="Admin Dashboard | Al Fajr Scents" description="Al Fajr Scents management console." noIndex />
 
       <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#10100E]/15 pb-6">
         <div>

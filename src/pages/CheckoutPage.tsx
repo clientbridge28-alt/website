@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Lock, ArrowRight, AlertCircle } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
@@ -39,6 +39,12 @@ export function CheckoutPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const idempotencyKey = useMemo(() => crypto.randomUUID(), []);
+
+  useEffect(() => {
+    if (enabledMethods.length > 0 && !enabledMethods.some((m) => m.id === paymentMethod)) {
+      setPaymentMethod(enabledMethods[0].id);
+    }
+  }, [enabledMethods, paymentMethod]);
 
   const selectedMethodObj = paymentMethods.find((m) => m.id === paymentMethod);
 
@@ -96,6 +102,7 @@ export function CheckoutPage() {
           title="Checkout | Al Fajr Scents"
           description="Complete your Al Fajr Scents fragrance order with Cash on Delivery or Bank Transfer across Pakistan."
           canonicalPath="/checkout"
+          noIndex
         />
         <h1 className="font-display text-4xl text-[#10100E]">Your Shopping Bag Is Empty</h1>
         <p className="mt-3 text-sm text-[#302018]/80">
@@ -117,6 +124,7 @@ export function CheckoutPage() {
         title="Guest Checkout | Al Fajr Scents"
         description="Fast guest checkout for Al Fajr Scents orders across Pakistan. Cash on Delivery and Direct Bank Transfer supported."
         canonicalPath="/checkout"
+        noIndex
       />
 
       <div className="border-b border-[#10100E]/10 pb-6">

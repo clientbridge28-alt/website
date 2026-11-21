@@ -319,6 +319,7 @@ export function WishlistPage() {
         title="Saved Wishlist | Al Fajr Scents"
         description="Your saved Al Fajr Scents fragrances."
         canonicalPath="/wishlist"
+        noIndex
       />
       <div className="border-b border-[#10100E]/10 pb-8">
         <p className="text-xs uppercase tracking-[0.2em] text-[#302018]/70">Saved Selection</p>
@@ -363,6 +364,7 @@ export function SearchResultsPage() {
         title={`Search: ${q || 'All'} | Al Fajr Scents`}
         description="Search Al Fajr Scents Eau de Parfum fragrances by name or olfactory note."
         canonicalPath="/search"
+        noIndex
       />
       <h1 className="font-display text-4xl font-normal text-[#10100E]">
         Search Results{q ? ` for "${q}"` : ''}
@@ -390,7 +392,7 @@ export function SearchResultsPage() {
 export function NotFoundPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 py-24 text-center">
-      <SEOHead title="Page Not Found | Al Fajr Scents" description="Page not found." />
+      <SEOHead title="Page Not Found | Al Fajr Scents" description="Page not found." noIndex />
       <p className="text-xs uppercase tracking-[0.2em] text-[#C6A46A]">404</p>
       <h1 className="mt-2 font-display text-5xl text-[#10100E]">Page Not Found</h1>
       <p className="mt-4 text-sm text-[#302018]/80">

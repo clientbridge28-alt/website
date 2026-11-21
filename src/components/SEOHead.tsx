@@ -5,10 +5,11 @@ interface SEOHeadProps {
   description: string;
   canonicalPath?: string;
   ogImage?: string;
+  noIndex?: boolean;
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-export function SEOHead({ title, description, canonicalPath, ogImage, jsonLd }: SEOHeadProps) {
+export function SEOHead({ title, description, canonicalPath, ogImage, noIndex = false, jsonLd }: SEOHeadProps) {
   useEffect(() => {
     document.title = title;
 
@@ -22,6 +23,7 @@ export function SEOHead({ title, description, canonicalPath, ogImage, jsonLd }: 
       el.setAttribute('content', value);
     };
 
+    setMeta('name', 'robots', noIndex ? 'noindex, nofollow' : 'index, follow');
     setMeta('name', 'description', description);
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
@@ -61,7 +63,7 @@ export function SEOHead({ title, description, canonicalPath, ogImage, jsonLd }: 
       const s = document.getElementById('af-dynamic-jsonld');
       if (s) s.remove();
     };
-  }, [title, description, canonicalPath, ogImage, jsonLd]);
+  }, [title, description, canonicalPath, ogImage, noIndex, jsonLd]);
 
   return null;
 }

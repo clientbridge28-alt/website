@@ -39,6 +39,7 @@ export function OrderConfirmationPage() {
         title={`Order ${orderNumber || ''} Confirmed | Al Fajr Scents`}
         description="Order confirmation and tracking details for your Al Fajr Scents purchase."
         canonicalPath={`/order-confirmation/${orderNumber || ''}`}
+        noIndex
       />
 
       <div className="border border-[#10100E]/15 bg-[#FAF8F5] p-8 sm:p-12">

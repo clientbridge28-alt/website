@@ -18,6 +18,7 @@ import {
 initDatabase();
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = Number(process.env.PORT) || 3000;
 
 // Capture raw body for webhook HMAC verification while parsing JSON
